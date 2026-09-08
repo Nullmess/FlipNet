@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Déclare le service utilisateur macOS. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.flipnet.bridge</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__PYTHON__</string>
+    <string>-m</string><string>flipnet_bridge</string>
+    <string>--transport</string><string>__TRANSPORT__</string>
+    <string>--service-mode</string>
+    <string>--log-file</string><string>__LOG_FILE__</string>
+  </array>
+  <key>RunAtLoad</key><true/>
+  <key>KeepAlive</key><true/>
+  <key>StandardOutPath</key><string>__LOG_FILE__</string>
+  <key>StandardErrorPath</key><string>__LOG_FILE__</string>
+</dict>
+</plist>

@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+**/__pycache__
+**/*.pyc
+**/*.egg-info
+**/.gradle
+**/.ufbt
+**/build
+**/dist
+.idea
+.vscode
+.DS_Store
+Thumbs.db

@@ -1,0 +1,80 @@
+{
+  "schema_version": 3,
+  "language": "fr",
+  "wikipedia_language": "fr",
+  "web_search_provider": "duckduckgo",
+  "searxng_url": "",
+  "ascii_only": true,
+  "request_timeout_seconds": 10,
+  "port_scan_timeout_seconds": 0.7,
+  "default_rss_source": "fr_certfr",
+  "rss_feeds": [
+    {
+      "id": "custom_0",
+      "language": "custom",
+      "category": "custom",
+      "title": "My feed",
+      "url": "https://example.com/feed.xml"
+    }
+  ],
+  "monitor_poll_seconds": 30,
+  "desktop_notifications": true,
+  "secure_actions_enabled": false,
+  "secure_action_ttl_seconds": 30,
+  "allowed_service_actions": [
+    "user:my-service.service"
+  ],
+  "allowed_workload_actions": [
+    "podman:grafana",
+    "podman:prometheus"
+  ],
+  "allowed_feature_permissions": [
+    "network.http",
+    "network.socket",
+    "network.dns",
+    "network.scan",
+    "system.read",
+    "state.read",
+    "state.write",
+    "actions.secure",
+    "system.write"
+  ],
+  "disabled_feature_domains": [],
+  "feature_timeout_cap_seconds": 120,
+  "online_apps": [
+    {
+      "id": "github_status",
+      "title": "GitHub status",
+      "mode": "run",
+      "url": "https://www.githubstatus.com/api/v2/status.json",
+      "response_path": "status.description",
+      "result_title": "GitHub status"
+    }
+  ],
+  "ai_endpoint": "",
+  "ai_model": "",
+  "ai_api_key_env": "FLIPNET_AI_API_KEY",
+  "playbooks": [
+    {
+      "id": "restart-observability",
+      "title": "Restart observability stack",
+      "title_fr": "Redemarrer la supervision",
+      "rollback": "Check container logs and restart the previous version if a component stays down.",
+      "rollback_fr": "Verifier les journaux et restaurer la version precedente si un composant reste indisponible.",
+      "steps": [
+        {
+          "kind": "workload",
+          "operation": "restart",
+          "target": "podman:prometheus"
+        },
+        {
+          "kind": "workload",
+          "operation": "restart",
+          "target": "podman:grafana"
+        }
+      ]
+    }
+  ],
+  "plugin_catalog_url": "",
+  "disabled_extension_groups": []
+}

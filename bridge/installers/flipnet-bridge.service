@@ -1,0 +1,14 @@
+# Déclare le service utilisateur Linux.
+[Unit]
+Description=FlipNet USB/BLE Internet Bridge
+After=network-online.target bluetooth.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=__PYTHON__ -m flipnet_bridge --transport __TRANSPORT__ --service-mode --log-file __LOG_FILE__
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

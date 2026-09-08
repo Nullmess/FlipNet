@@ -1,0 +1,6 @@
+<!-- Déclare les textes Android. -->
+<resources>
+    <string name="app_name">FlipNet</string>
+    <string name="service_channel">FlipNet connection</string>
+    <string name="stop_service">Stop</string>
+</resources>

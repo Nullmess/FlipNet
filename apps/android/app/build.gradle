@@ -1,0 +1,64 @@
+// Configure la compilation de l’application Android.
+plugins {
+    id 'com.android.application'
+}
+
+def versionFile = rootProject.file('../../VERSION')
+if (!versionFile.isFile()) {
+    throw new GradleException("Missing root VERSION file")
+}
+def flipNetVersion = versionFile.text.trim()
+def versionParts = flipNetVersion.tokenize('.').collect { it as int }
+if (versionParts.size() != 3) {
+    throw new GradleException("VERSION must use major.minor.patch")
+}
+// Garde un code Android croissant après le reset public.
+def flipNetVersionCode = 100000 + versionParts[0] * 10000 + versionParts[1] * 100 + versionParts[2]
+
+def androidCompileSdk = (System.getenv('FLIPNET_ANDROID_COMPILE_SDK') ?: '35') as int
+def androidBuildTools = System.getenv('FLIPNET_ANDROID_BUILD_TOOLS') ?: '35.0.0'
+
+def signingStore = System.getenv('FLIPNET_SIGNING_STORE')
+def signingAlias = System.getenv('FLIPNET_SIGNING_ALIAS') ?: 'flipnet-debug'
+def signingPassword = System.getenv('FLIPNET_SIGNING_PASSWORD') ?: 'flipnet-debug'
+
+android {
+    buildFeatures {
+        buildConfig true
+    }
+
+    namespace 'com.flipnet.bridge'
+    compileSdk androidCompileSdk
+    buildToolsVersion androidBuildTools
+
+    signingConfigs {
+        debug {
+            if (signingStore) {
+                storeFile file(signingStore)
+                storePassword signingPassword
+                keyAlias signingAlias
+                keyPassword signingPassword
+            }
+        }
+    }
+
+    defaultConfig {
+        applicationId 'com.flipnet.bridge'
+        minSdk 26
+        targetSdk androidCompileSdk
+        versionCode flipNetVersionCode
+        versionName flipNetVersion
+    }
+
+    buildTypes {
+        debug {
+            if (signingStore) {
+                signingConfig signingConfigs.debug
+            }
+        }
+    }
+}
+
+tasks.withType(org.gradle.api.tasks.compile.JavaCompile).configureEach {
+    options.compilerArgs += ['-Xlint:deprecation', '-Werror']
+}

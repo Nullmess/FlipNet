@@ -1,0 +1,1 @@
+"""Regroupe les extensions intégrées."""

@@ -1,0 +1,8 @@
+# Réduit le contexte Docker Android.
+.gradle
+.idea
+app/build
+build
+dist
+local.properties
+*.iml

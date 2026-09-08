@@ -1,0 +1,13 @@
+# Déclare l’application FlipNet pour le Flipper.
+App(
+    appid="flipnet",
+    name="FlipNet",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="flipnet_app",
+    fap_category="Tools",
+    fap_icon="flipnet_icon.png",
+    fap_version="1.0.1",
+    fap_description="Gateway companion for Flipper Zero over USB or BLE.",
+    fap_author="FlipNet contributors",
+    stack_size=12288,
+)

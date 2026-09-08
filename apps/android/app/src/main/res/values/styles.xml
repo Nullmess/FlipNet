@@ -1,0 +1,13 @@
+<!-- Déclare le thème Android. -->
+<resources>
+    <style name="Theme.FlipNet" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowBackground">@color/launcher_background</item>
+        <item name="android:colorAccent">#FF7A18</item>
+        <item name="android:statusBarColor">@color/launcher_background</item>
+        <item name="android:navigationBarColor">@color/navigation_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>

@@ -1,0 +1,5 @@
+<!-- Déclare l’icône adaptative principale. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground_layer" />
+</adaptive-icon>

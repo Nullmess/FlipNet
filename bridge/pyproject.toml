@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flipnet-bridge"
+dynamic = ["version"]
+description = "USB and Bluetooth gateway for FlipNet"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "bleak>=0.22,<2",
+    "pyserial>=3.5,<4",
+    "tzdata>=2024.1; platform_system == 'Windows'",
+]
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "FlipNet contributors"}]
+keywords = ["flipper-zero", "networking", "bluetooth", "usb"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Operating System :: OS Independent",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: System :: Networking",
+]
+
+[project.urls]
+Homepage = "https://github.com/Macxzew/FlipNet"
+Repository = "https://github.com/Macxzew/FlipNet"
+Issues = "https://github.com/Macxzew/FlipNet/issues"
+Changelog = "https://github.com/Macxzew/FlipNet/blob/main/CHANGELOG.md"
+
+[project.scripts]
+flipnet-bridge = "flipnet_bridge.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

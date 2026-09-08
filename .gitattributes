@@ -1,0 +1,15 @@
+# Fixe les règles de suivi Git.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.md text diff=markdown
+*.yml text
+*.yaml text
+*.toml text
+*.json text
+*.xml text
+*.png binary
+*.fap binary
+*.apk binary
+*.whl binary
+*.zip binary

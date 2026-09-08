@@ -1,0 +1,77 @@
+# Décrit les services Docker du projet.
+name: flipnet
+
+x-flipper: &flipper
+  image: flipnet-flipper:${FLIPNET_VERSION:-1.0.1}
+  build:
+    context: .
+    dockerfile: scripts/docker/flipper/Dockerfile
+    args:
+      FLIPNET_VERSION: "${FLIPNET_VERSION:-1.0.1}"
+    # DNS Docker sur Alpine
+    network: host
+  working_dir: /workspace/apps/flipper
+  volumes:
+    - .:/workspace
+    - ufbt-cache:/tmp/ufbt
+  environment:
+    UFBT_HOME: /tmp/ufbt
+    FLIPNET_HOST_DEV_ROOT: /host/dev
+    FLIPNET_HOST_SYS_ROOT: /host/sys
+    FLIPNET_FLIPPER_DEVICE: ${FLIPNET_FLIPPER_DEVICE:-}
+  # DNS hôte pour uFBT
+  network_mode: host
+
+x-android: &android
+  image: flipnet-android:${FLIPNET_VERSION:-1.0.1}
+  build:
+    context: apps/android
+    dockerfile: Dockerfile
+    args:
+      FLIPNET_VERSION: "${FLIPNET_VERSION:-1.0.1}"
+  working_dir: /workspace/apps/android
+  volumes:
+    - .:/workspace
+    - android-signing:/tmp/android-signing
+    - android-adb:/root/.android
+  environment:
+    FLIPNET_SIGNING_STORE: /tmp/android-signing/flipnet-debug.p12
+    FLIPNET_SIGNING_ALIAS: flipnet-debug
+    FLIPNET_SIGNING_PASSWORD: flipnet-debug
+
+services:
+  flipper-build:
+    <<: *flipper
+    command: ["build"]
+
+  flipper-launch:
+    <<: *flipper
+    command: ["launch"]
+    volumes:
+      - .:/workspace
+      - ufbt-cache:/tmp/ufbt
+      - /dev:/host/dev
+      - /sys:/host/sys:ro
+    privileged: true
+    stdin_open: true
+    tty: true
+
+  android-build:
+    <<: *android
+    command: ["build"]
+
+  android-install:
+    <<: *android
+    command: ["install"]
+    network_mode: host
+    privileged: true
+    stdin_open: true
+    tty: true
+
+
+volumes:
+  ufbt-cache:
+  android-signing:
+    name: flipnet-android-signing
+  android-adb:
+    name: flipnet-android-adb

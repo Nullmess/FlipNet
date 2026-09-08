@@ -1,0 +1,6 @@
+<!-- Déclare les couleurs Android. -->
+<resources>
+    <color name="notification_color">#FF7A18</color>
+    <color name="launcher_background">#00000000</color>
+    <color name="navigation_background">#0A0A0A</color>
+</resources>
