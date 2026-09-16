@@ -203,6 +203,6 @@ Give a ⭐️ if this project helped you!
 
 ## 📄 License
 
-Copyright © 2026 [Macxzew](https://github.com/Macxzew).
+Copyright © 2026 [Nullmess](https://github.com/Nullmess).
 
 This project is licensed under the [MIT License](LICENSE).
