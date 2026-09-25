@@ -17,6 +17,9 @@
     <a href="https://github.com/nullmess/FlipNet/stargazers">
         <img src="https://img.shields.io/github/stars/nullmess/FlipNet?style=flat&logo=github" alt="Stars">
     </a>
+    <a href="https://github.com/nullmess/FlipNet/releases/latest">
+        <img src="https://img.shields.io/github/v/release/nullmess/FlipNet?style=flat&label=release" alt="Release">
+    </a>
     <a href="LICENSE">
         <img src="https://img.shields.io/github/license/nullmess/FlipNet?style=flat" alt="License">
     </a>
