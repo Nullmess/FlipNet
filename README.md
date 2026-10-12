@@ -42,7 +42,7 @@
 - Calculator, units, currency, translation and time tools
 - Android application launcher from the Flipper Zero
 - Android Companion view combining phone and gateway monitoring
-- Android file manager for Flipper SD/internal storage with multi-file/folder upload, download, rename/delete
+- Android file manager for Flipper SD/internal storage
 - Monitors, alerts and protected automation actions
 - Targets, groups, favorites and local history
 - Declarative desktop plugins without executable code
