@@ -49,8 +49,6 @@
 - Silent background connection checks
 - Loading screens shown only for user-requested operations
 
-Unsupported tools are automatically hidden when they are not available on the connected companion.
-
 ---
 
 ## 🧩 Architecture
